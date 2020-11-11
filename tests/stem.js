@@ -95,7 +95,6 @@ test('Extract the full analysis for a non-word', function(done) {
     myStem.start();
 
     myStem.analyze("шоп78шол").then(function(analysis) {
-        console.log(analysis)
         assert.deepEqual( analysis, 'шоп78шол');
     }).then(function() {
         myStem.stop();
