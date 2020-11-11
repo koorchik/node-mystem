@@ -77,3 +77,28 @@ test('Extract all grammemes unknown word', function(done) {
         done();
     });
 });
+
+test('Extract the full analysis for a known word', function(done) {
+    var myStem = new MyStem();
+    myStem.start();
+
+    myStem.analyze("немцы").then(function(analysis) {
+        assert.deepEqual( analysis, [{ lex: 'немец', gr: 'S,m,anim=nom,pl' }]);
+    }).then(function() {
+        myStem.stop();
+        done();
+    });
+});
+
+test('Extract the full analysis for a non-word', function(done) {
+    var myStem = new MyStem();
+    myStem.start();
+
+    myStem.analyze("шоп78шол").then(function(analysis) {
+        console.log(analysis)
+        assert.deepEqual( analysis, 'шоп78шол');
+    }).then(function() {
+        myStem.stop();
+        done();
+    });
+})
