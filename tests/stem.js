@@ -83,7 +83,7 @@ test('Extract the full analysis for a known word', function(done) {
     myStem.start();
 
     myStem.analyze("немцы").then(function(analysis) {
-        assert.deepEqual( analysis, [{ lex: 'немец', gr: 'S,m,anim=nom,pl' }]);
+        assert.deepEqual( analysis, {text: "немцы", analysis: [{ lex: 'немец', gr: 'S,m,anim=nom,pl' }]});
     }).then(function() {
         myStem.stop();
         done();
